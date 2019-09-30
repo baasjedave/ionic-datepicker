@@ -65,3 +65,5 @@ gulp.task('del', function () {
 
 gulp.task('build', ['del-temp-files']);
 
+// our main sequence, with some conditional jobs depending on params
+gulp.task('default', ['build']);
