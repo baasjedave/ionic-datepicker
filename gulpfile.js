@@ -55,7 +55,13 @@ gulp.task('make-bundle', ['del', 'html2js', 'css2js'], function () {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('del-temp-files', ['make-bundle'], function () {
+gulp.task('make-bundle-uncompressed', ['del', 'html2js', 'css2js'], function () {
+  return gulp.src(['./dist/*', './src/*.js'])
+    .pipe(concat('ionic-datepicker.bundle.js'))
+    .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('del-temp-files', ['make-bundle','make-bundle-uncompressed'], function () {
   del(['./dist/templates.js', './dist/ionic-datepicker.styles.js']);
 });
 
